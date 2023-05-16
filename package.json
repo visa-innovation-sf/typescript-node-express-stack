@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A kickstart project for a Node-Express techstack Typescript project",
   "scripts": {
-    "lint": "eslint --fix",
+    "lint": "eslint . --fix",
     "start": "ts-node src/index.ts",
     "test": "test"
   },
