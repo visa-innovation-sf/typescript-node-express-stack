@@ -14,7 +14,7 @@ dotenv.config({
 
 const config: Config = {
 	port: parseInt(process.env.PORT ?? ''),
-	whitelist: [process.env.WHITELIST ?? ''],
+	whitelist: process.env.WHITELIST ? process.env.WHITELIST.split(',') : [],
 };
 
 export default config;
