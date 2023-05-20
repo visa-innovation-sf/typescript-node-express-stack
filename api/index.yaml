@@ -1,0 +1,111 @@
+openapi: 3.1.0
+
+info:
+  description: Sample API specs for TypeScript Node Express Techstack Project
+  title: TypeScript Node Express Techstack Project
+  version: 0.0.1
+
+servers:
+- description: local development server
+  url: http://localhost:3000
+
+paths:
+  /sign-in:
+    post:
+      description: sign in request to authenticate the user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/credential'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authorization'
+          description: Successful response
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sign-in-error'
+          description: Unauthorized request
+  /refresh-token:
+    post:
+      description: refresh token request to prolong the login session of a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/authorization'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authorization'
+          description: Successful response
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/refresh-session-error'
+          description: Unauthorized request
+
+components:
+  schemas:
+    authorization:
+      title: Authentication Result
+      type: object
+      properties:
+        access_token:
+          description: Authorization token for API accesses
+          type: string
+          example: token_access_me
+        refresh_token:
+          description: Refresh token for access_token
+          type: string
+          example: token_refresh_me
+        userId:
+          description: User ID
+          type: string
+          example: pyuhan@visa
+    credential:
+      title: User Credential
+      type: object
+      properties:
+        username:
+          description: Authentication credential - user name
+          type: string
+          example: pyuhan@visa.com
+        password:
+          description: Authentication credential - password
+          type: string
+          example: testing123
+    refresh-session-error:
+      title: Refresh Token Request Error
+      type: object
+      properties:
+        message:
+          description: error message
+          type: string
+          example: 'Forbidden: Invalid Refresh Token'
+        status:
+          description: error status
+          type: string
+          example: 403 Forbidden
+    sign-in-error:
+      title: Sign In Request Error
+      type: object
+      properties:
+        message:
+          description: error message
+          type: string
+          example: Either your username and password is incorrect. 3 attempts left before account is locked. Please contact an administrator or email us at APSGICSUPPORT@visa.com for any further assistance.
+        status:
+          description: error status
+          type: string
+          example: 401 Unauthorized
