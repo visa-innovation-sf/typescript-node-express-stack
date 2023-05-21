@@ -7,9 +7,9 @@ interface Config {
 			accessKeyId: string;
 			secretAccessKey: string;
 		};
+		region?: string;
 	};
     port: number,
-	region?: string;
     whitelist: string[];
 }
 
@@ -25,9 +25,9 @@ const config: Config = {
 			accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '',
 			secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
 		},
+		region: process.env.AWS_REGION,
 	},
 	port: parseInt(process.env.PORT ?? ''),
-	region: process.env.REGION,
 	whitelist: process.env.WHITELIST ? process.env.WHITELIST.split(',') : [],
 };
 
