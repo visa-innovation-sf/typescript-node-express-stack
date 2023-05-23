@@ -11,17 +11,18 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 11,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
-        "indent": [
+        "eol-last": [
             "error",
-            "tab"
+            "always"
         ],
+        "indent": 0,
         "linebreak-style": 0,
         "no-useless-catch": 0,
         "no-mixed-spaces-and-tabs": 0,
