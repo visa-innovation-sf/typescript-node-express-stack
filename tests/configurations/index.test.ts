@@ -1,4 +1,4 @@
-import config from '.';
+import config from '../../src/configurations';
 
 describe('configurations', () => {
   test('No environment is specified', () => {
