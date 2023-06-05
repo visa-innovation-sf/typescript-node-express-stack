@@ -1,0 +1,10 @@
+**/*.mock.ts
+**/*.test.ts
+.eslint*
+.github
+.gitignore
+.prettier*
+jest.config.js
+node_modules
+tests
+README.md

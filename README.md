@@ -72,21 +72,6 @@ The languages involved are:
 npm run start
 ```
 
-### Running the application in the development environment
-
-```sh
-# From project root
-npm run start:dev
-```
-
-### Building and running the application in the production environment
-
-```sh
-# From project root
-npm run build
-npm run serve
-```
-
 ### Building and running Docker Image
 
 ```sh

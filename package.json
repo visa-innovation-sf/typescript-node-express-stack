@@ -3,27 +3,26 @@
   "version": "1.0.0",
   "description": "A kickstart project for a Node-Express techstack Typescript project",
   "scripts": {
-    "build": "NODE_ENV=production tsc",
     "lint": "eslint .",
-    "serve": "serve -s build",
     "start": "ts-node src/index.ts",
-    "start:dev": "NODE_ENV=development ts-node src/index.ts",
     "test": "jest",
     "test:setup": "npx ts-jest config:init"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/visa-innovation-sf/vcxc-poc-backend.git"
+    "url": "git+https://github.com/visa-innovation-sf/typescript-node-express-stack"
   },
   "keywords": [
-    "vcxc"
+    "typescript",
+    "node",
+    "express"
   ],
   "author": "Singapore RSDP",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/visa-innovation-sf/vcxc-poc-backend/issues"
+    "url": "https://github.com/visa-innovation-sf/typescript-node-express-stack/issues"
   },
-  "homepage": "https://github.com/visa-innovation-sf/vcxc-poc-backend#readme",
+  "homepage": "https://github.com/visa-innovation-sf/typescript-node-express-stack#readme",
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
@@ -46,6 +45,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-validator": "^7.0.1",
     "helmet": "^7.0.0",
     "swagger-ui-express": "^4.6.3",
     "yamljs": "^0.3.0"

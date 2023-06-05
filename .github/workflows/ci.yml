@@ -9,7 +9,7 @@ on:
       - staging
 
 jobs:
-  build:
+  process:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     strategy:
@@ -17,21 +17,23 @@ jobs:
         node-version: [19.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Load all environment variables
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Linting
         run: npm run lint
 
       - name: Testing
         run: npm run test
-
-      - name: Building
-        run: npm run build
