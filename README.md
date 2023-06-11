@@ -72,6 +72,13 @@ The languages involved are:
 npm run start
 ```
 
+### Running the production application locally
+
+```sh
+# From project root
+npm run build && npm run serve
+```
+
 ### Building and running Docker Image
 
 ```sh

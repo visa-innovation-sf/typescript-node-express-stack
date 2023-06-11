@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A kickstart project for a Node-Express techstack Typescript project",
   "scripts": {
+    "build": "NODE_ENV=production tsc",
     "lint": "eslint .",
+    "serve": "node build/index.js",
     "start": "ts-node src/index.ts",
     "test": "jest",
     "test:setup": "npx ts-jest config:init"

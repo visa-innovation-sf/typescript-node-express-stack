@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-import path from 'path';
 
 interface Config {
   aws: {
@@ -13,16 +12,12 @@ interface Config {
   whitelist: string[];
 }
 
-const env = process.env.NODE_ENV ?? '';
-
-dotenv.config({
-  path: path.resolve(__dirname, env ? `.env.${env}` : '.env'),
-});
+dotenv.config();
 
 const config: Config = {
   aws: {
     credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '.env',
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '',
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
     },
     region: process.env.AWS_REGION,
