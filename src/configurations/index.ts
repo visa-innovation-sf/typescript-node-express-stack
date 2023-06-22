@@ -2,11 +2,14 @@ import dotenv from 'dotenv';
 
 interface Config {
   aws: {
-    credentials: {
-      accessKeyId: string;
-      secretAccessKey: string;
+    rds: {
+      database?: string;
+      host?: string;
+      id?: string;
+      password?: string;
+      port: number;
+      username?: string;
     };
-    region?: string;
   };
   port: number;
   whitelist: string[];
@@ -16,11 +19,14 @@ dotenv.config();
 
 const config: Config = {
   aws: {
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '',
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+    rds: {
+      database: process.env.AWS_RDS_DB_NAME,
+      host: process.env.AWS_RDS_ENDPOINT,
+      id: process.env.AWS_RDS_ID,
+      password: process.env.AWS_RDS_PASSWORD,
+      port: parseInt(process.env.AWS_RDS_PORT ?? ''),
+      username: process.env.AWS_RDS_USERNAME,
     },
-    region: process.env.AWS_REGION,
   },
   port: parseInt(process.env.PORT ?? ''),
   whitelist: process.env.WHITELIST ? process.env.WHITELIST.split(',') : [],
